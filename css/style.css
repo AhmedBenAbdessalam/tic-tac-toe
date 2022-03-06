@@ -1,0 +1,16 @@
+body {
+  max-width: 700px;
+  margin-inline: auto;
+}
+main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-image: url("./../assets/tic-tac-toe-board.svg");
+}
+.cell {
+  aspect-ratio: 1;
+  position: relative;
+}
+main img {
+  position: absolute;
+}
