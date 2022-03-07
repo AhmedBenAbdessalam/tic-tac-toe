@@ -12,6 +12,27 @@
     <script src="./js/app.js" defer></script>
   </head>
   <body>
+    <header>
+      <div>
+        <h1>Score</h1>
+        <p>
+          Player <span id="player-score">0</span> :
+          <span id="cpu-score">0</span> CPU
+        </p>
+      </div>
+      <form action="">
+        <label for="cpu-difficulty">cpu difficulty</label
+        ><select name="difficulty" id="cpu-difficulty">
+          <option value="easy">easy</option>
+          <option value="medium">medium</option>
+          <option value="hard">hard</option>
+          <option value="impossible">impossible</option>
+        </select>
+      </form>
+      <div>
+        <button id="x-button">X</button><button id="o-button">O</button>
+      </div>
+    </header>
     <main></main>
   </body>
 </html>

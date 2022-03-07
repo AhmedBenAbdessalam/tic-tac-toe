@@ -1,6 +1,18 @@
+*:root {
+  --color-blue: #12aaa3;
+  --color-coral: #f16f4e;
+}
 body {
   max-width: 700px;
   margin-inline: auto;
+}
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-blue);
+  color: white;
 }
 main {
   display: grid;

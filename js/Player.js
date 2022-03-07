@@ -1,6 +1,9 @@
-const Player = (name, mark) => {
+const Player = (mark) => {
   function play(position) {
-    Gameboard.updateBoard(mark, position);
+    Gameboard.updateBoard(this, position);
   }
-  return { name, mark, play };
+  function setMark(mark) {
+    this.mark = mark;
+  }
+  return { mark, play, setMark };
 };
