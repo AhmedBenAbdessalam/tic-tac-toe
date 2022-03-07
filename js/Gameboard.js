@@ -1,11 +1,13 @@
 const Gameboard = (() => {
   let difficulty;
   let cpuMark;
+  let player;
   let playing = false;
   let legalMoves = [];
   const mainGrid = document.querySelector("main");
   let cells = [];
   function init(human) {
+    player = human;
     getDifficulty();
     //clear canvas
     mainGrid.textContent = "";
@@ -48,13 +50,54 @@ const Gameboard = (() => {
     });
   }
   function isWinningMove(mark, position) {
+    //horizontal
+    if (
+      cells[0][position.j].content !== "" &&
+      cells[0][position.j].content === cells[1][position.j].content &&
+      cells[0][position.j].content === cells[2][position.j].content
+    ) {
+      if (mark === player.mark) {
+        alert("You win!");
+      } else {
+        alert("You lose!");
+      }
+      return true;
+    }
+    //vertical
+    else if (
+      cells[position.i][0].content !== "" &&
+      cells[position.i][0].content === cells[position.i][1].content &&
+      cells[position.i][0].content === cells[position.i][2].content
+    ) {
+      if (mark === player.mark) {
+        alert("You win!");
+      } else {
+        alert("You lose!");
+      }
+      return true;
+    }
+    //diagonal
+    else if (
+      (cells[0][0].content !== "" &&
+        cells[0][0].content === cells[1][1].content &&
+        cells[0][0].content === cells[2][2].content) ||
+      (cells[0][2].content !== "" &&
+        cells[0][2].content === cells[1][1].content &&
+        cells[0][2].content === cells[2][0].content)
+    ) {
+      if (mark === player.mark) {
+        alert("You win!");
+      } else {
+        alert("You lose!");
+      }
+      return true;
+    }
+
     return false;
   }
   function updateBoard(player, position) {
     if (isLegalMove(position)) {
       placeMark(player.mark, position);
-      //check if win
-      playing != isWinningMove(player.mark, position);
       playCpu();
 
       return true;
@@ -108,12 +151,13 @@ const Gameboard = (() => {
     legalMoves = legalMoves.filter((move) => {
       return move.i != position.i || move.j != position.j;
     });
+    //check if gameover
+    playing = !isWinningMove(mark, position);
     // out of moves
     if (legalMoves.length === 0) {
       playing = false;
+      alert("It's a draw!");
     }
-    //check if gameover
-    playing != isWinningMove(cpuMark, position);
   }
   function changeDifficulty(diff) {
     this.difficulty = diff;
