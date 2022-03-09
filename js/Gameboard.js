@@ -58,8 +58,10 @@ const Gameboard = (() => {
     ) {
       if (mark === player.mark) {
         alert("You win!");
+        events.emit("playerWin");
       } else {
         alert("You lose!");
+        events.emit("cpuWin");
       }
       return true;
     }
@@ -71,8 +73,10 @@ const Gameboard = (() => {
     ) {
       if (mark === player.mark) {
         alert("You win!");
+        events.emit("playerWin");
       } else {
         alert("You lose!");
+        events.emit("cpuWin");
       }
       return true;
     }
@@ -87,8 +91,10 @@ const Gameboard = (() => {
     ) {
       if (mark === player.mark) {
         alert("You win!");
+        events.emit("playerWin");
       } else {
         alert("You lose!");
+        events.emit("CpuWin");
       }
       return true;
     }
@@ -154,7 +160,7 @@ const Gameboard = (() => {
     //check if gameover
     playing = !isWinningMove(mark, position);
     // out of moves
-    if (legalMoves.length === 0) {
+    if (playing && legalMoves.length === 0) {
       playing = false;
       alert("It's a draw!");
     }

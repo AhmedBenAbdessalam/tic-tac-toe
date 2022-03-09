@@ -14,3 +14,7 @@ oButton.addEventListener("click", () => {
     Gameboard.init(human);
   }
 });
+const resetButton = document.querySelector("#reset-button");
+resetButton.addEventListener("click", () => {
+  Gameboard.init(human);
+});
