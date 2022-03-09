@@ -7,8 +7,8 @@ const Gameboard = (() => {
   const mainGrid = document.querySelector("main");
   let cells = [];
   function init(human) {
-    player = human;
     getDifficulty();
+    player = human;
     //clear canvas
     mainGrid.textContent = "";
     cells = [];
@@ -42,6 +42,9 @@ const Gameboard = (() => {
   }
   function getDifficulty() {
     const difficultySelect = document.querySelector("#cpu-difficulty");
+    difficultySelect.onchange = () => {
+      init(human);
+    };
     difficulty = difficultySelect.value;
   }
   function isLegalMove(position) {
